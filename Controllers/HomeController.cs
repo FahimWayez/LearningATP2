@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Task01__CV.Controllers
 {
@@ -12,18 +8,24 @@ namespace Task01__CV.Controllers
         {
             return View();
         }
-
-        public ActionResult About()
+        public ActionResult Introduction()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
-
-        public ActionResult Contact()
+        public ActionResult Education()
         {
-            ViewBag.Message = "Your contact page.";
-
+            return View();
+        }
+        public ActionResult Projects()
+        {
+            return View();
+        }
+        public ActionResult Reference()
+        {
+            return View();
+        }
+        public ActionResult PersonalInformation()
+        {
             return View();
         }
     }
