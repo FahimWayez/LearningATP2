@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>Profile</h2>
+<h3>Welcome to Dashboard</h3>
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Id</td>
+        <td>CGPA</td>
+    </tr>
+
+    <tr>
+        <td>Fahim</td>
+        <td>1</td>
+        <td>1.22</td>
+    </tr>
+    <tr>
+        <td>@ViewBag.Name</td>
+        <td>@ViewBag.student.name</td>
+        <td>1</td>
+        <td>@ViewBag.student.id</td>
+        <td>1.22</td>
+        <td>@ViewBag.student.cgpa</td>
+
+        <td>@ViewBag.students[0].name</td>
+        <td>@ViewBag.students[0].id</td>
+        <td>@ViewBag.students[0].cgpa</td>
+     
+    </tr>
+
+    @foreach (var item in ViewBag.students)
+    {
+        <tr>
+            <td>
+                @item.name;
+            </td>
+            <td>
+                @item.id;
+            </td>
+            <td>
+                @item.cgpa;
+            </td>
+        </tr>
+    }
+</table>

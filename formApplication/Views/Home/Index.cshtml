@@ -1,0 +1,50 @@
+﻿@model FormSubmission.Models.Person
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+
+    <h2>Index</h2>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Name" })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Uname)
+        @Html.TextBoxFor(model => model.Uname, new { @class = "form-control", placeholder = "Username" })
+        @Html.ValidationMessageFor(model => model.Uname, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        Gender: @Html.RadioButtonFor(model => model.Gender, "Male") Male
+        @Html.RadioButtonFor(model => model.Gender, "Female") Female
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Profession)
+        @Html.DropDownListFor(model => model.Profession, new SelectList(new[] { "Student", "Business" }), "Select", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Profession, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Id)
+        @Html.TextBoxFor(model => model.Id, new { @class = "form-control", placeholder = "ID (xx-xxxxx-x)" })
+        @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email)
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email (xx-xxxxx-x@student.aiub.edu)" })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    </div>
+
+ 
+
+    <input type="submit" value="Sign Up" class="btn btn-danger" />
+}
