@@ -138,6 +138,14 @@
     <Compile Include="Migrations\202403231546162_CreatedDbSets.designer.cs">
       <DependentUpon>202403231546162_CreatedDbSets.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202403231932142_final.cs" />
+    <Compile Include="Migrations\202403231932142_final.designer.cs">
+      <DependentUpon>202403231932142_final.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403231937332_mark3.cs" />
+    <Compile Include="Migrations\202403231937332_mark3.designer.cs">
+      <DependentUpon>202403231937332_mark3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DTO\AdminDTO.cs" />
     <Compile Include="Models\DTO\CollectionRequestDTO.cs" />
@@ -213,10 +221,15 @@
     <Content Include="Views\Restaurant\EditProfile.cshtml" />
     <Content Include="Views\Restaurant\Filter.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="Views\NGO\Dashboard.cshtml" />
+    <Content Include="Views\NGO\EditProfile.cshtml" />
+    <Content Include="Views\NGO\Filter.cshtml" />
+    <Content Include="Views\NGO\FoodCollection.cshtml" />
+    <Content Include="Views\NGO\HireEmployee.cshtml" />
+    <Content Include="Views\NGO\ShowAllEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\NGO\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -251,6 +264,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202403231546162_CreatedDbSets.resx">
       <DependentUpon>202403231546162_CreatedDbSets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403231932142_final.resx">
+      <DependentUpon>202403231932142_final.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403231937332_mark3.resx">
+      <DependentUpon>202403231937332_mark3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

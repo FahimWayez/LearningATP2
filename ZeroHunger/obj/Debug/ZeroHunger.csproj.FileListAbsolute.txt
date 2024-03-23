@@ -83,3 +83,5 @@ C:\Users\fahim\Downloads\Tenamoy Jibon\10th Semester\atp2\ZeroHunger\obj\Debug\Z
 C:\Users\fahim\Downloads\Tenamoy Jibon\10th Semester\atp2\ZeroHunger\obj\Debug\ZeroHunger.pdb
 C:\Users\fahim\Downloads\Tenamoy Jibon\10th Semester\atp2\ZeroHunger\obj\Debug\ZeroHunger.Migrations.CreatedDbSets.resources
 C:\Users\fahim\Downloads\Tenamoy Jibon\10th Semester\atp2\ZeroHunger\obj\Debug\ZeroHunger.csproj.GenerateResource.cache
+C:\Users\fahim\Downloads\Tenamoy Jibon\10th Semester\atp2\ZeroHunger\obj\Debug\ZeroHunger.Migrations.final.resources
+C:\Users\fahim\Downloads\Tenamoy Jibon\10th Semester\atp2\ZeroHunger\obj\Debug\ZeroHunger.Migrations.mark3.resources
