@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Zero_Hunger.Models.EF
+namespace ZeroHunger.Models.EF
 {
     public class Restaurant
     {

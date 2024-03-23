@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Zero_Hunger.Models.EF
+namespace ZeroHunger.Models.EF
 {
     public class Access
     {
