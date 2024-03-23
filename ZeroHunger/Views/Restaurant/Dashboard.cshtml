@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Restaurant Dashboard</h2>
+
+<div>
+    <h3>User: @ViewBag.Username</h3>
+    <h3><a href="@Url.Action("CollectionRequest", "Restaurant")">Upload for Collection</a></h3>
+    <h3><a href="@Url.Action("Filter", "Restaurant")">Donation History</a></h3>
+    <h3><a href="@Url.Action("EditProfile", "Restaurant")">Edit Profile</a></h3>
+    <h3><a href="@Url.Action("Logout", "Auth")">Logout</a></h3>
+</div>
+

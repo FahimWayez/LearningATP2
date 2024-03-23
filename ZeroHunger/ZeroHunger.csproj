@@ -160,6 +160,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap-reboot.rtl.css" />
     <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-sketchy.css" />
     <Content Include="Content\bootstrap-utilities.css" />
     <Content Include="Content\bootstrap-utilities.min.css" />
     <Content Include="Content\bootstrap-utilities.rtl.css" />
@@ -205,10 +206,14 @@
     <Content Include="Views\Auth\RestaurantRegistration.cshtml" />
     <Content Include="Views\Auth\CreateAdmin.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Restaurant\CollectionRequest.cshtml" />
+    <Content Include="Views\Restaurant\Dashboard.cshtml" />
+    <Content Include="Views\Restaurant\DonationHistory.cshtml" />
+    <Content Include="Views\Restaurant\EditProfile.cshtml" />
+    <Content Include="Views\Restaurant\Filter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Restaurant\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
