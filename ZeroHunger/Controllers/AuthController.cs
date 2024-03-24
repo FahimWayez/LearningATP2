@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using ZeroHunger.Models.DTO;
 using ZeroHunger.Models.EF;
 
-namespace Zero_Hunger.Controllers
+namespace ZeroHunger.Controllers
 {
     public class AuthController : Controller
     {
