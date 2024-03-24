@@ -1,22 +1,32 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Filter";
 }
 
-<h2>Filter</h2>
-
-<div class="form-horizontal">
-    <form action="/Restaurant/DonationHistory" class="form-group" method="get">
-        <select name="filter" class="form-control">
-            <option value="All">All</option>
-            @foreach (var status in ViewBag.statuses)
-            {
-                <option value="@status.Name">@status.Name</option>
-            }
-        </select>
-        <input type="submit" value="Submit" class="btn btn-default" />
-    </form>
+<div class="container">
+    <h2 class="text-center">@ViewBag.Title</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/Restaurant/DonationHistory" method="get">
+                        <div class="form-group" align="center">
+                            <label for="filterSelect">Filter by Status:</label>
+                            <select name="filter" id="filterSelect" class="form-control">
+                                <option value="All">All</option>
+                                @foreach (var status in ViewBag.statuses)
+                                {
+                                    <option value="@status.Name">@status.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <br />
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Search</button><br />
+                        </div>
+                            <a href="@Url.Action("Dashboard", "Restaurant")" class="btn btn-link">Back to Dashboard</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-<div><a href="@Url.Action("Dashboard", "Restaurant")">Back to Dashboard</a></div>
-

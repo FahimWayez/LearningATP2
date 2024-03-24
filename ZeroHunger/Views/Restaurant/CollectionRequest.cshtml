@@ -4,49 +4,56 @@
     ViewBag.Title = "Collection Request";
 }
 
-<h2>Collection Request</h2>
+<div class="container">
+    <h2 class="text-center">@ViewBag.Title</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-md-4 col-form-label text-md-right" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.ExpireTime, htmlAttributes: new { @class = "col-md-4 col-form-label text-md-right" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.ExpireTime, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ExpireTime, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ExpireTime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ExpireTime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ExpireTime, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "col-md-4 col-form-label text-md-right" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">Create</button>
+                            </div>
+                        </div>
+                        <a href="@Url.Action("Dashboard", "Restaurant")" class="btn btn-link mt-3">Back to Dashboard</a>
+                    }
+                </div>
             </div>
         </div>
     </div>
-}
+</div>
 
 @if (ViewBag.Message != null)
 {
-    <div>@ViewBag.Message</div>
+    <div class="alert alert-info">@ViewBag.Message</div>
 }
 
-<a href="@Url.Action("Dashboard", "Restaurant")">Back to Dashboard</a>
+

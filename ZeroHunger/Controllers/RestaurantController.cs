@@ -29,6 +29,7 @@ namespace ZeroHunger.Controllers
             var Id = db.Users.FirstOrDefault(u => u.UserName == username).Id;
             var data = db.Restaurants.Find(Id);
             ViewBag.Name = data.Name;
+            ViewBag.Id = data.Id;
             ViewBag.Username = Session["Username"];
             if (TempData["Error"] != null)
             {

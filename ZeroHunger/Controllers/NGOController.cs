@@ -28,6 +28,17 @@ namespace ZeroHunger.Controllers
                 return RedirectToAction("Login", "Auth");
             }
             ViewBag.Username = Session["Username"].ToString();
+            var db = new ZeroHungerDbContext();
+            var username = Session["UserName"].ToString();
+            var Id = db.Users.FirstOrDefault(u => u.UserName == username).Id;
+            var data = db.Users.Find(Id);
+            ViewBag.Name = data.UserName;
+            ViewBag.Id = data.Id;
+            ViewBag.Username = Session["Username"];
+            if (TempData["Error"] != null)
+            {
+                ViewBag.Error = TempData["Error"];
+            }
 
             return View();
         }

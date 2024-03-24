@@ -8,8 +8,9 @@
             <div class="card">
                 <h2 class="card-header text-center">@ViewBag.Title</h2>
                 <div class="card-body">
-                    <p class="text-center">Name: @ViewBag.Username</p>                     
+                    <p class="text-center">Name: @ViewBag.Name</p>
                     <p class="text-center">Username: @ViewBag.Username</p>
+                    <p class="text-center">Id: @ViewBag.Id</p>
                     <hr>
 
                     <form action="@Url.Action("ChangeUsername", "NGO")" method="post">

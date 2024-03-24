@@ -1,13 +1,14 @@
 ﻿@{
     ViewBag.Title = "Dashboard";
 }
-
+<h2 class="card-title text-center mb-4">Welcome to your Dashboard, @ViewBag.Username</h2>
 <div class="container">
     <div class="row">
         <div class="col-md-6">
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Food Collection and Delivery</h5>
+                    <p class="card-text">Collect foods from restaurant and deliver it.</p>
                     <a href="@Url.Action("Filter", "NGO")" class="btn btn-primary btn-block">Go</a>
                 </div>
             </div>
@@ -15,7 +16,8 @@
         <div class="col-md-6">
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">Show All Employee</h5>
+                    <h5 class="card-title">Employee</h5>
+                    <p class="card-text">See all the employees.</p>
                     <a href="@Url.Action("ShowAllEmployee", "NGO")" class="btn btn-primary btn-block">Go</a>
                 </div>
             </div>
@@ -25,7 +27,8 @@
         <div class="col-md-6">
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">Hire Employee</h5>
+                    <h5 class="card-title">Add Employee</h5>
+                    <p class="card-text">Strengthened your army.</p>
                     <a href="@Url.Action("HireEmployee", "NGO")" class="btn btn-primary btn-block">Go</a>
                 </div>
             </div>
@@ -34,6 +37,7 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Profile Settings</h5>
+                    <p class="card-text">Edit your profile settings.</p>
                     <a href="@Url.Action("EditProfile", "NGO")" class="btn btn-primary btn-block">Go</a>
                 </div>
             </div>

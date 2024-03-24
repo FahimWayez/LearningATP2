@@ -1,64 +1,60 @@
-﻿
-@{
-    ViewBag.Title = "DonationHistory";
+﻿@{
+    ViewBag.Title = "Donation History";
 }
 
-<a href="@Url.Action("Filter", "Restaurant")">Back to Filter</a>
-
-<h2>Donation History</h2>
-
-<table class="table table-bordered">
-    <tr>
-        <th>Donation Meals</th>
-        <th>Uplaod Time</th>
-        <th>Expire Time</th>
-        <th>Collection Time</th>
-        <th>Amount(Kg/s)</th>
-        <th>Status</th>
-        <th>Collector ID</th>
-        <th>Collected</th>
-        <th>Cancel</th>
-    </tr>
-    @foreach (var item in ViewBag.Donations)
-    {
-        <tr>
-            <th>@item.Name</th>
-            <th>@item.UploadDate</th>
-            <th>@item.ExpireTime</th>
-            @if (item.CompleteTime == null)
-            {
-                <th>-</th>
-            }
-            else
-            {
-                <th>@item.CompleteTime</th>
-            }
-            <th>@item.Amount</th>
-            <th>@item.StatusName</th>
-            @if (item.AssignedTo == null)
-            {
-                <th>-</th>
-            }
-            else
-            {
-                <th>@item.AssignedTo</th>
-            }
-            @if (item.StatusName == "Accepted")
-            {
-                <th><a href="/Restaurant/CollectedMeal/@item.Id?filter=@ViewBag.filter" class="btn btn-success">Collected</a></th>
-            }
-            else
-            {
-                <th>-</th>
-            }
-            @if (item.StatusName == "Pending" || item.StatusName == "Accepted")
-            {
-                <th><a href="/Restaurant/CancelledMeal/@item.Id?filter=@ViewBag.filter" class="btn btn-danger">Cancel</a></th>
-            }
-            else
-            {
-                <th>-</th>
-            }
-        </tr>
-    }
-</table>
+<div class="container">
+    <a href="@Url.Action("Filter", "Restaurant")" class="btn btn-secondary mb-3">Back to Filter</a>
+    <h2 class="text-center">@ViewBag.Title</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Donation Meals</th>
+                    <th scope="col">Upload Time</th>
+                    <th scope="col">Expire Time</th>
+                    <th scope="col">Collection Time</th>
+                    <th scope="col">Amount (Kg/s)</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Collector ID</th>
+                    <th scope="col">Collected</th>
+                    <th scope="col">Cancel</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.Donations)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.UploadDate</td>
+                        <td>@item.ExpireTime</td>
+                        <td>@(item.CompleteTime == null ? "-" : item.CompleteTime.ToString())</td>
+                        <td>@item.Amount</td>
+                        <td>@item.StatusName</td>
+                        <td>@(item.AssignedTo == null ? "-" : item.AssignedTo)</td>
+                        <td>
+                            @if (item.StatusName == "Accepted")
+                            {
+                                <a href="/Restaurant/CollectedMeal/@item.Id?filter=@ViewBag.filter" class="btn btn-success">Collected</a>
+                            }
+                            else
+                            {
+                                <button class="btn btn-success" disabled>Collected</button>
+                            }
+                        </td>
+                        <td>
+                            @if (item.StatusName == "Pending" || item.StatusName == "Accepted")
+                            {
+                                <a href="/Restaurant/CancelledMeal/@item.Id?filter=@ViewBag.filter" class="btn btn-danger">Cancel</a>
+                            }
+                            else
+                            {
+                                <button class="btn btn-danger" disabled>Cancel</button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+s
