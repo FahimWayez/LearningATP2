@@ -42,9 +42,19 @@
                 </div>
             </div>
         </div>
-        <form action="@Url.Action("Logout", "Auth")" method="post">
+        <form id="logoutForm" action="@Url.Action("Logout", "Auth")" method="post">
             @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-danger btn-block">Logout</button>
+            <button type="button" onclick="confirmLogout()" class="btn btn-danger btn-block">Logout</button>
         </form>
+
     </div>
 </div>
+
+<script>
+    function confirmLogout() {
+        if (confirm("Are you sure you want to logout?")) {
+            document.getElementById("logoutForm").submit();
+        }
+    }
+</script>
+

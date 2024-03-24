@@ -29,7 +29,7 @@
                                 <td>@item.Name</td>
                                 <td>@item.UploadDate</td>
                                 <td>@item.ExpireTime</td>
-                                <td>@(item.CompleteTime ?? "-")</td>
+                                <td>@(item.CompleteTime ?? DateTime.Now)</td>
                                 <td>@item.Amount</td>
                                 <td>@item.StatusName</td>
                                 <td>@(item.AssignedTo ?? "-")</td>

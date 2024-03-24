@@ -1,12 +1,25 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Linq;
 using System.Web.Mvc;
+using ZeroHunger.Models.DTO;
 using ZeroHunger.Models.EF;
 
 namespace ZeroHunger.Controllers
 {
     public class NGOController : Controller
     {
+
+        private readonly IMapper _mapper;
+        public NGOController()
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<User, UserDTO>();
+            });
+
+            _mapper = config.CreateMapper();
+        }
         public ActionResult Dashboard()
         {
             if (Session["Username"] == null || Session["Access"].ToString() != "NGO")
@@ -27,14 +40,36 @@ namespace ZeroHunger.Controllers
             {
                 return RedirectToAction("Login", "Auth");
             }
-            ViewBag.Username = Session["Username"].ToString();
-            var db = new ZeroHungerDbContext();
+
+            //ViewBag.Username = Session["Username"].ToString();
+            //var db = new ZeroHungerDbContext();
+            //var username = Session["UserName"].ToString();
+            //var Id = db.Users.FirstOrDefault(u => u.UserName == username).Id;
+            //var data = db.Users.Find(Id);
+            //ViewBag.Name = data.UserName;
+            //ViewBag.Id = data.Id;
+            //ViewBag.Username = Session["Username"];
+            //if (TempData["Error"] != null)
+            //{
+            //    ViewBag.Error = TempData["Error"];
+            //}
+
+            //return View();
+
             var username = Session["UserName"].ToString();
-            var Id = db.Users.FirstOrDefault(u => u.UserName == username).Id;
-            var data = db.Users.Find(Id);
-            ViewBag.Name = data.UserName;
-            ViewBag.Id = data.Id;
-            ViewBag.Username = Session["Username"];
+            var db = new ZeroHungerDbContext();
+            var user = db.Users.FirstOrDefault(u => u.UserName == username);
+
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+
+            var userDTO = _mapper.Map<UserDTO>(user);
+            ViewBag.Name = userDTO.Name;
+            ViewBag.Username = userDTO.UserName;
+            ViewBag.Id = userDTO.Id;
+
             if (TempData["Error"] != null)
             {
                 ViewBag.Error = TempData["Error"];

@@ -8,6 +8,22 @@ namespace ZeroHunger.Controllers
 {
     public class RestaurantController : Controller
     {
+        //private readonly IMapper _mapper;
+
+        //public RestaurantController()
+        //{
+        //    // Configure AutoMapper mappings
+        //    var config = new MapperConfiguration(cfg =>
+        //    {
+        //        cfg.CreateMap<Restaurant, UserDTO>()
+        //           .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+        //           .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+        //           .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.UserName));
+        //    });
+
+        //    _mapper = config.CreateMapper();
+        //}
+
         public ActionResult Dashboard()
         {
             if (Session["Username"] == null || Session["Access"].ToString() != "Restaurant")
@@ -38,6 +54,34 @@ namespace ZeroHunger.Controllers
 
             return View();
         }
+        //public ActionResult EditProfile()
+        //{
+        //    if (Session["Username"] == null || Session["Access"].ToString() != "Restaurant")
+        //    {
+        //        return RedirectToAction("Login", "Auth");
+        //    }
+
+        //    var username = Session["UserName"].ToString();
+        //    var db = new ZeroHungerDbContext();
+        //    var user = db.Restaurants.FirstOrDefault(u => u.User.UserName == username);
+
+        //    if (user == null)
+        //    {
+        //        return RedirectToAction("Login", "Auth");
+        //    }
+
+        //    var userDTO = _mapper.Map<UserDTO>(user);
+        //    ViewBag.Name = userDTO.Name;
+        //    ViewBag.Username = userDTO.UserName;
+        //    ViewBag.Id = userDTO.Id;
+
+        //    if (TempData["Error"] != null)
+        //    {
+        //        ViewBag.Error = TempData["Error"];
+        //    }
+
+        //    return View();
+        //}
 
         [HttpPost]
         public ActionResult ChangeName(FormCollection Form)

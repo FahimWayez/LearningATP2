@@ -3,7 +3,7 @@
 }
 
 <div class="container">
-    <a href="@Url.Action("Filter", "Restaurant")" class="btn btn-secondary mb-3">Back to Filter</a>
+    <a href="@Url.Action("Filter", "Restaurant")" class="btn btn-link mb-3">Back to Filter</a>
     <h2 class="text-center">@ViewBag.Title</h2>
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
@@ -44,7 +44,7 @@
                         <td>
                             @if (item.StatusName == "Pending" || item.StatusName == "Accepted")
                             {
-                                <a href="/Restaurant/CancelledMeal/@item.Id?filter=@ViewBag.filter" class="btn btn-danger">Cancel</a>
+                                <button class="btn btn-danger" onclick="confirmCancellation('@item.Id', '@ViewBag.filter')">Cancel</button>
                             }
                             else
                             {
@@ -57,4 +57,10 @@
         </table>
     </div>
 </div>
-s
+<script>
+    function confirmCancellation(id, filter) {
+        if (confirm("Are you sure you want to cancel this meal?")) {
+            window.location.href = "/Restaurant/CancelledMeal/" + id + "?filter=" + filter;
+        }
+    }
+</script>
