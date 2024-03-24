@@ -1,24 +1,36 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "ShowAllEmployee";
 }
 
-<a href="@Url.Action("Dashboard", "NGO")">Back to Dashboard</a>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <a href="@Url.Action("Dashboard", "NGO")" class="btn btn-link mt-3">Back to Dashboard</a>
+            <h2 class="text-center mb-4">Show All Employees</h2>
 
-<h2>ShowAllEmployee</h2>
-
-<div>
-    <table class="table table-bordered">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-        </tr>
-        @foreach (var employee in ViewBag.employees)
-        {
-            <tr>
-                <td>@employee.Id</td>
-                <td>@employee.Name</td>
-            </tr>
-        }
-    </table>
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">ID</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var employee in ViewBag.employees)
+                                {
+                                    <tr>
+                                        <td>@employee.Name</td>
+                                        <td>@employee.Id</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

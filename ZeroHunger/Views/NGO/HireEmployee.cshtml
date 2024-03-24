@@ -1,24 +1,63 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "HireEmployee";
 }
 
-<a href="@Url.Action("Dashboard", "NGO")">Back to Dashboard</a>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="text-center mb-4">Hire Employee</h2>
 
-<h2>Hire Employee</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="@Url.Action("HireEmployee", "NGO")" method="post" class="needs-validation" novalidate>
+                        <div class="form-group" " align="center">
+                            <label for="name">Assigned Username:</label>
+                            <input type="text" name="name" id="name" class="form-control" required>
+                            <div class="invalid-feedback">Please assign an username for the employee.</div>
+                        </div>
+                        <br />
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button><br />
+                        </div>
+                            <a href="@Url.Action("Dashboard", "NGO")" class="btn btn-link mt-3">Back to Dashboard</a>
+                    </form>
+                </div>
+            </div>
+            <br>
+            
 
-<div>
-    <form action="@Url.Action("HireEmployee", "NGO")" method="post">
-        Name: <input type="text" name="name" value="" />
-        <input type="submit" />
-    </form>
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-danger mt-3">@ViewBag.Error</div>
+                }
+                @if (ViewBag.Success != null)
+                {
+                    <div class="alert alert-success mt-3">@ViewBag.Success</div>
+                }
+            </div>
+        </div>
 </div>
 
-@if (ViewBag.Error != null)
-{
-    <div class="alert alert-danger">@ViewBag.Error</div>
-}
-@if (ViewBag.Success != null)
-{
-    <div class="alert alert-success">@ViewBag.Success</div>
+@section Scripts {
+    <script>        
+        (function () {
+            'use strict';
+
+            
+            var forms = document.querySelectorAll('.needs-validation');
+
+            
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+        })();
+    </script>
 }

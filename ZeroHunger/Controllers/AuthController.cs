@@ -98,58 +98,5 @@ namespace Zero_Hunger.Controllers
             ViewBag.Error = "Something Went Wrong";
             return View();
         }
-        public ActionResult createAdmin()
-        {
-            if (Session["Username"] == null || Session["Access"].ToString() != "NGO")
-            {
-                return RedirectToAction("Login", "Auth");
-            }
-
-            if (TempData["Error"] != null)
-            {
-                ViewBag.Error = TempData["Error"];
-            }
-
-            if (TempData["Success"] != null)
-            {
-                ViewBag.Success = TempData["Success"];
-            }
-
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult createAdmin(AdminDTO adminUser)
-        {
-            if (Session["Username"] == null || Session["Access"].ToString() != "NGO")
-            {
-                return RedirectToAction("Login", "Auth");
-            }
-            if (ModelState.IsValid)
-            {
-                var db = new ZeroHungerDbContext();
-                var data = db.Users.FirstOrDefault(u => u.UserName == adminUser.UserName);
-
-                if (data != null)
-                {
-                    TempData["Error"] = "The Username Already exists";
-                    return RedirectToAction("CreateAdmin");
-                }
-
-                var newAdminUser = new User();
-                newAdminUser.Id = Guid.NewGuid();
-                newAdminUser.UserName = adminUser.UserName;
-                newAdminUser.Password = adminUser.Password;
-                newAdminUser.AccessName = "NGO";
-
-                db.Users.Add(newAdminUser);
-                db.SaveChanges();
-
-                TempData["Success"] = "New Admin User has been Created";
-                return RedirectToAction("createAdmin");
-            }
-            return RedirectToAction("createAdmin");
-        }
     }
 }

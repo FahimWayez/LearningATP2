@@ -28,6 +28,7 @@ namespace ZeroHunger.Controllers
                 return RedirectToAction("Login", "Auth");
             }
             ViewBag.Username = Session["Username"].ToString();
+
             return View();
         }
 

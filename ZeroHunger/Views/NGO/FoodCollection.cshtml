@@ -1,64 +1,63 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "FoodCollection";
 }
-<a href="@Url.Action("Filter", "NGO")">Back to Filter</a>
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <a href="@Url.Action("Filter", "NGO")" class="btn btn-secondary mb-3">Back to Filter</a>
+            <h2 class="text-center mb-4">Food Collection</h2>
 
-<h2>Food Collection</h2>
-
-<table class="table table-bordered">
-    <tr>
-        <th>Donation Meals</th>
-        <th>Uplaod Time</th>
-        <th>Expire Time</th>
-        <th>Collection Time</th>
-        <th>Amount(Kg/s)</th>
-        <th>Status</th>
-        <th>Collector ID</th>
-        <th>Assign Employee</th>
-    </tr>
-    @foreach (var item in ViewBag.foodList)
-    {
-        <tr>
-            <th>@item.Name</th>
-            <th>@item.UploadDate</th>
-            <th>@item.ExpireTime</th>
-            @if (item.CompleteTime == null)
-            {
-                <th>-</th>
-            }
-            else
-            {
-                <th>@item.CompleteTime</th>
-            }
-            <th>@item.Amount</th>
-            <th>@item.StatusName</th>
-            @if (item.AssignedTo == null)
-            {
-                <th>-</th>
-            }
-            else
-            {
-                <th>@item.AssignedTo</th>
-            }
-            @if (item.StatusName == "Pending")
-            {
-                <th>
-                    <form action="/NGO/assignEmployee" method="post">
-                        <input type="hidden" name="id" value="@item.Id" />
-                        <input type="hidden" name="filter" value="@ViewBag.Filter" />
-                        <select name="employee">
-                            @foreach (var employee in ViewBag.employees)
-                            {
-                                <option value="@employee.Id">@employee.Name</option>
-                            }
-                        </select>
-                        <input type="submit" name="Accept" value="Accept" class="btn btn-success" />
-                    </form>
-                </th>
-
-            }
-        </tr>
-    }
-</table>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Donation Meals</th>
+                            <th>Upload Time</th>
+                            <th>Expire Time</th>
+                            <th>Collection Time</th>
+                            <th>Amount (Kg/s)</th>
+                            <th>Status</th>
+                            <th>Collector ID</th>
+                            <th>Assigned Employee</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.foodList)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.UploadDate</td>
+                                <td>@item.ExpireTime</td>
+                                <td>@(item.CompleteTime ?? "-")</td>
+                                <td>@item.Amount</td>
+                                <td>@item.StatusName</td>
+                                <td>@(item.AssignedTo ?? "-")</td>
+                                @if (item.StatusName == "Pending")
+                                {
+                                    <td>
+                                        <form action="/NGO/assignEmployee" method="post">
+                                            <input type="hidden" name="id" value="@item.Id" />
+                                            <input type="hidden" name="filter" value="@ViewBag.Filter" />
+                                            <select name="employee" class="form-control">
+                                                @foreach (var employee in ViewBag.employees)
+                                                {
+                                                    <option value="@employee.Id">@employee.Name</option>
+                                                }
+                                            </select>
+                                            <button type="submit" name="Accept" class="btn btn-success">Accept</button>
+                                        </form>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>-</td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
